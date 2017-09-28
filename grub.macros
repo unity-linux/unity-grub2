@@ -275,6 +275,7 @@ git config --unset user.name					\
 %{nil}
 
 %define do_efi_configure()					\
+./autogen.sh
 %configure							\\\
 	%{cc_equals}						\\\
 	CFLAGS="%{2} -I$(pwd)"					\\\
@@ -354,6 +355,7 @@ cd ..								\
 
 %define do_legacy_build()					\
 cd grub-%{1}-%{tarversion}					\
+./autogen.sh
 %configure							\\\
 	%{cc_equals}						\\\
 	CFLAGS="%{legacy_cflags} -I$(pwd)"			\\\
