@@ -46,7 +46,7 @@ BuildRequires:	rpm-devel rpm-libs
 BuildRequires:	autoconf automake autogen device-mapper-devel
 BuildRequires:	freetype-devel gettext-devel git
 BuildRequires:	texinfo
-BuildRequires:	dejavu-sans-fonts
+BuildRequires:	fonts-ttf-dejavu
 BuildRequires:	help2man
 %ifarch %{efi_arch}
 BuildRequires:	pesign >= 0.99-8
