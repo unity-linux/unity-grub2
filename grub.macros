@@ -263,7 +263,6 @@ git init							\
 echo '![[:digit:]][[:digit:]]_*.in' > util/grub.d/.gitignore	\
 echo '!*.[[:digit:]]' > util/.gitignore				\
 echo '!config.h' > include/grub/emu/.gitignore			\
-./autogen.sh							\
 git config user.email "%{name}-owner@fedoraproject.org"		\
 git config user.name "Fedora Ninjas"				\
 git config gc.auto 0						\
@@ -275,7 +274,6 @@ git config --unset user.name					\
 %{nil}
 
 %define do_efi_configure()					\
-./autogen.sh
 %configure							\\\
 	%{cc_equals}						\\\
 	CFLAGS="%{2} -I$(pwd)"					\\\

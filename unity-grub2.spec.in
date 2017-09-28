@@ -163,6 +163,7 @@ cp %{SOURCE4} grub-%{grublegacyarch}-%{tarversion}/unifont.pcf.gz
 %endif
 
 %build
+./autogen.sh
 %if 0%{with_efi_arch}
 %{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_cflags}}
 %endif
