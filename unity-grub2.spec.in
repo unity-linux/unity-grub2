@@ -44,7 +44,7 @@ BuildRequires:	freetype-devel libusb-devel
 BuildRequires:	rpm-devel
 BuildRequires:	rpm-devel rpm-libs
 BuildRequires:	autoconf automake autogen device-mapper-devel
-BuildRequires:	freetype-devel gettext-devel git
+BuildRequires:	freetype2-devel gettext-devel git
 BuildRequires:	texinfo
 BuildRequires:	fonts-ttf-dejavu
 BuildRequires:	help2man
@@ -163,7 +163,6 @@ cp %{SOURCE4} grub-%{grublegacyarch}-%{tarversion}/unifont.pcf.gz
 %endif
 
 %build
-./autogen.sh
 %if 0%{with_efi_arch}
 %{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_cflags}}
 %endif
