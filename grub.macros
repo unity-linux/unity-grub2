@@ -158,7 +158,7 @@
 %global moduledir %{legacy_target_cpu_name}-%{platform}
 %endif
 
-%global evr %{epoch}:%{version}-%{release}
+%global evr %{version}-%{release}
 
 %ifarch x86_64
 %global with_efi_common 1
