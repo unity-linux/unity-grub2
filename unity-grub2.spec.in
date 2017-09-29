@@ -88,6 +88,7 @@ subpackages.
 Summary:	Support tools for GRUB.
 Group:		System Environment/Base
 Obsoletes:	grub2-tools < %{evr}
+Obsoletes:	grub2-common
 Provides:	grub2-tools
 Requires:	%{name}-common = %{version}-%{release}
 Requires:	gettext os-prober which file
