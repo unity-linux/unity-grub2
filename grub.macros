@@ -225,6 +225,7 @@ Requires:	%{name}-tools-minimal >= %{evr}				\
 Requires:	%{name}-tools-extra = %{evr}				\
 Requires:	%{name}-tools = %{evr}					\
 Provides:	grub2-efi = %{evr}					\
+Provides:	%{name}-efi = %{evr}					\
 %{?legacy_provides:Provides:	grub2 = %{evr}}			\
 %{-o:Obsoletes:	grub2-efi < %{evr}}					\
 									\
@@ -248,6 +249,7 @@ This subpackage provides support for rebuilding your own grub.efi.	\
 Summary:	Files used to boot removeable media with EFI		\
 Group:		System Environment/Base					\
 Requires:	%{name}-common = %{evr}					\
+Provides:	%{name}-efi-cdboot = %{evr}				\
 Provides:	grub2-efi-cdboot = %{evr}				\
 %{expand:%%description %{1}-cdboot}					\
 %{desc}									\
