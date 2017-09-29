@@ -78,6 +78,7 @@ hardware devices.\
 Summary:	grub2 common layout
 Group:		System Environment/Base
 Provides:	grub2-common
+Obsoletes:	grub2-common
 BuildArch:	noarch
 
 %description common
