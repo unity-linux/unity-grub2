@@ -6,7 +6,7 @@
 %{expand:%%{!?buildsubdir:%%global buildsubdir grub-%{tarversion}}}
 %{expand:%%{!?_licensedir:%%global license %%%%doc}}
 
-%global _configure ../configure
+%global _configure ../configure --prefix=/usr
 
 %if %{?_with_ccache: 1}%{?!_with_ccache: 0}
 %global cc_equals CC=/usr/%{_lib}/ccache/gcc
@@ -274,7 +274,7 @@ git config --unset user.name					\
 %{nil}
 
 %define do_efi_configure()					\
-../configure							\\\
+../configure --prefix=/usr --sysconfdir=/etc			\\\
 	%{cc_equals}						\\\
 	CFLAGS="%{2} -I$(pwd)"					\\\
 	CPPFLAGS="${CPPFLAGS} -I$(pwd)"				\\\
@@ -353,7 +353,7 @@ cd ..								\
 
 %define do_legacy_build()					\
 cd grub-%{1}-%{tarversion}					\
-../configure							\\\
+../configure  --prefix=/usr --sysconfdir=/etc			\\\
 	%{cc_equals}						\\\
 	CFLAGS="%{legacy_cflags} -I$(pwd)"			\\\
 	TARGET_LDFLAGS=-static					\\\
