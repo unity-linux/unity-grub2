@@ -195,6 +195,8 @@ Summary:	Modules used to build custom grub images		\
 Group:		System Environment/Base					\
 BuildArch:	noarch							\
 Requires:	%{name}-common = %%{evr}				\
+Provides:	grub2-%{1}-modules = %%{evr}				\
+Provides:	%{name}-%{1}-modules = %%{evr}				\
 %%description %%{1}-modules						\
 %%{desc}								\
 This subpackage provides support for rebuilding your own grub.efi.	\
