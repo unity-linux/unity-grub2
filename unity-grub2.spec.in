@@ -104,7 +104,7 @@ Summary:	Support tools for GRUB.
 Group:		System Environment/Base
 Provides:	grub2-tools-efi
 Requires:	gettext os-prober which file
-Requires:	${name}-common = %{version}-%{release}
+Requires:	%{name}-common = %{version}-%{release}
 Obsoletes:	grub2-tools < %{evr}
 
 %description tools-efi
@@ -117,7 +117,7 @@ Summary:	Support tools for GRUB.
 Group:		System Environment/Base
 Provides:	grub2-tools-minimal
 Requires:	gettext
-Requires:	${name}-common = %{version}-%{release}
+Requires:	%{name}-common = %{version}-%{release}
 Obsoletes:	grub2-tools < %{evr}
 
 %description tools-minimal
