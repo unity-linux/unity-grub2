@@ -309,15 +309,15 @@ fi
 %files common -f grub.lang
 %dir %{_libdir}/grub/
 %dir %{_datarootdir}/grub/
-%dir %{_datarootdir}/grub/themes/
-%exclude %{_datarootdir}/grub/themes/*
+#%dir %{_datarootdir}/grub/themes/
+#%exclude %{_datarootdir}/grub/themes/*
 %attr(0700,root,root) %dir %{_sysconfdir}/grub.d
 %dir %{_datarootdir}/grub
 %exclude %{_datarootdir}/grub/*
 %dir /boot/grub2
 %dir /boot/grub2/themes/
 %dir /boot/grub2/themes/system
-%exclude /boot/grub2/themes/system/*
+#%exclude /boot/grub2/themes/system/*
 %attr(0700,root,root) %dir /boot/grub2
 %exclude /boot/grub2/*
 %dir %attr(0755,root,root) /boot/efi/EFI/%{efidir}
