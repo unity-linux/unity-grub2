@@ -176,12 +176,12 @@ Summary:	Bootloader with support for Linux, Multiboot, and more	\
 Group:		System Environment/Base					\
 Provides:	grub2 = %{evr}					\
 Obsoletes:	grub2 < %{evr}					\
-Requires:	grub2-common = %{evr}					\
-Requires:	grub2-tools-minimal = %{evr}				\
-Requires:	grub2-%{1}-modules = %{evr}				\
+Requires:	%{name}-common = %{evr}					\
+Requires:	%{name}-tools-minimal = %{evr}				\
+Requires:	%{name}-%{1}-modules = %{evr}				\
 Requires:	gettext which file					\
-Requires:	grub2-tools-extra = %{evr}				\
-Requires:	grub2-tools = %{evr}					\
+Requires:	%{name}-tools-extra = %{evr}				\
+Requires:	%{name}-tools = %{evr}					\
 Requires(pre):	dracut							\
 Requires(post): dracut							\
 %{expand:%%description %%{1}}						\
@@ -194,7 +194,7 @@ This subpackage provides support for %%{1} systems.			\
 Summary:	Modules used to build custom grub images		\
 Group:		System Environment/Base					\
 BuildArch:	noarch							\
-Requires:	grub2-common = %%{evr}				\
+Requires:	%{name}-common = %%{evr}				\
 %%description %%{1}-modules						\
 %%{desc}								\
 This subpackage provides support for rebuilding your own grub.efi.	\
@@ -206,8 +206,8 @@ This subpackage provides support for rebuilding your own grub.efi.	\
 Summary:	Support tools for GRUB.					\
 Group:		System Environment/Base					\
 Requires:	gettext os-prober which file system-logos		\
-Requires:	grub2-common = %{evr}					\
-Requires:	grub2-tools-minimal = %{evr}				\
+Requires:	%{name}-common = %{evr}					\
+Requires:	%{name}-tools-minimal = %{evr}				\
 Requires:	os-prober >= 1.58-11					\
 Requires:	gettext which file					\
 									\
@@ -220,10 +220,10 @@ This subpackage provides tools for support of %%{1} platforms.		\
 %{expand:%%package %{1}}						\
 Summary:	GRUB for EFI systems.					\
 Group:		System Environment/Base					\
-Requires:	grub2-common = %{evr}					\
-Requires:	grub2-tools-minimal >= %{evr}				\
-Requires:	grub2-tools-extra = %{evr}				\
-Requires:	grub2-tools = %{evr}					\
+Requires:	%{name}-common = %{evr}					\
+Requires:	%{name}-tools-minimal >= %{evr}				\
+Requires:	%{name}-tools-extra = %{evr}				\
+Requires:	%{name}-tools = %{evr}					\
 Provides:	grub2-efi = %{evr}					\
 %{?legacy_provides:Provides:	grub2 = %{evr}}			\
 %{-o:Obsoletes:	grub2-efi < %{evr}}					\
@@ -237,7 +237,7 @@ This subpackage provides support for %{1} systems.			\
 Summary:	Modules used to build custom grub.efi images		\
 Group:		System Environment/Base					\
 BuildArch:	noarch							\
-Requires:	grub2-common = %{evr}					\
+Requires:	%{name}-common = %{evr}					\
 %{-p:Provides:	grub2-efi-modules = %{evr}}				\
 %{-p:Obsoletes:	grub2-efi-modules < %{evr}}				\
 %{expand:%%description %{1}-modules}					\
@@ -247,7 +247,7 @@ This subpackage provides support for rebuilding your own grub.efi.	\
 %{expand:%%package %{1}-cdboot}						\
 Summary:	Files used to boot removeable media with EFI		\
 Group:		System Environment/Base					\
-Requires:	grub2-common = %{evr}					\
+Requires:	%{name}-common = %{evr}					\
 Provides:	grub2-efi-cdboot = %{evr}				\
 %{expand:%%description %{1}-cdboot}					\
 %{desc}									\

@@ -59,9 +59,9 @@ ExcludeArch:	s390 s390x %{arm}
 Obsoletes:	grub2 <= %{evr}
 
 %if 0%{with_legacy_arch}
-Requires:	grub2-%{legacy_package_arch} = %{evr}
+Requires:	%{name}-%{legacy_package_arch} = %{evr}
 %else
-Requires:	grub2-%{package_arch} = %{evr}
+Requires:	%{name}-%{package_arch} = %{evr}
 %endif
 
 %global desc \
@@ -89,7 +89,7 @@ Summary:	Support tools for GRUB.
 Group:		System Environment/Base
 Obsoletes:	grub2-tools < %{evr}
 Provides:	grub2-tools
-Requires:	grub2-common = %{version}-%{release}
+Requires:	%{name}-common = %{version}-%{release}
 Requires:	gettext os-prober which file
 Requires(pre):	dracut
 Requires(post):	dracut
@@ -104,7 +104,7 @@ Summary:	Support tools for GRUB.
 Group:		System Environment/Base
 Provides:	grub2-tools-efi
 Requires:	gettext os-prober which file
-Requires:	grub2-common = %{version}-%{release}
+Requires:	${name}-common = %{version}-%{release}
 Obsoletes:	grub2-tools < %{evr}
 
 %description tools-efi
@@ -117,7 +117,7 @@ Summary:	Support tools for GRUB.
 Group:		System Environment/Base
 Provides:	grub2-tools-minimal
 Requires:	gettext
-Requires:	grub2-common = %{version}-%{release}
+Requires:	${name}-common = %{version}-%{release}
 Obsoletes:	grub2-tools < %{evr}
 
 %description tools-minimal
@@ -129,8 +129,8 @@ Summary:	Support tools for GRUB.
 Group:		System Environment/Base
 Provides:	grub2-tools-extra
 Requires:	gettext os-prober which file
-Requires:	grub2-tools-minimal = %{version}-%{release}
-Requires:	grub2-common = %{version}-%{release}
+Requires:	%{name}-tools-minimal = %{version}-%{release}
+Requires:	%{name}-common = %{version}-%{release}
 Obsoletes:	grub2-tools < %{evr}
 
 %description tools-extra
