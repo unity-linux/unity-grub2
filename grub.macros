@@ -174,14 +174,14 @@
 %{expand:%%package %%{1}}						\
 Summary:	Bootloader with support for Linux, Multiboot, and more	\
 Group:		System Environment/Base					\
-Provides:	%{name} = %{evr}					\
-Obsoletes:	%{name} < %{evr}					\
-Requires:	%{name}-common = %{evr}					\
-Requires:	%{name}-tools-minimal = %{evr}				\
-Requires:	%{name}-%{1}-modules = %{evr}				\
+Provides:	grub2 = %{evr}					\
+Obsoletes:	grub2 < %{evr}					\
+Requires:	grub2-common = %{evr}					\
+Requires:	grub2-tools-minimal = %{evr}				\
+Requires:	grub2-%{1}-modules = %{evr}				\
 Requires:	gettext which file					\
-Requires:	%{name}-tools-extra = %{evr}				\
-Requires:	%{name}-tools = %{evr}					\
+Requires:	grub2-tools-extra = %{evr}				\
+Requires:	grub2-tools = %{evr}					\
 Requires(pre):	dracut							\
 Requires(post): dracut							\
 %{expand:%%description %%{1}}						\
@@ -194,7 +194,7 @@ This subpackage provides support for %%{1} systems.			\
 Summary:	Modules used to build custom grub images		\
 Group:		System Environment/Base					\
 BuildArch:	noarch							\
-Requires:	%%{name}-common = %%{evr}				\
+Requires:	%grub2-common = %%{evr}				\
 %%description %%{1}-modules						\
 %%{desc}								\
 This subpackage provides support for rebuilding your own grub.efi.	\
@@ -206,8 +206,8 @@ This subpackage provides support for rebuilding your own grub.efi.	\
 Summary:	Support tools for GRUB.					\
 Group:		System Environment/Base					\
 Requires:	gettext os-prober which file system-logos		\
-Requires:	%{name}-common = %{evr}					\
-Requires:	%{name}-tools-minimal = %{evr}				\
+Requires:	grub2-common = %{evr}					\
+Requires:	grub2-tools-minimal = %{evr}				\
 Requires:	os-prober >= 1.58-11					\
 Requires:	gettext which file					\
 									\
@@ -220,13 +220,13 @@ This subpackage provides tools for support of %%{1} platforms.		\
 %{expand:%%package %{1}}						\
 Summary:	GRUB for EFI systems.					\
 Group:		System Environment/Base					\
-Requires:	%{name}-common = %{evr}					\
-Requires:	%{name}-tools-minimal >= %{evr}				\
-Requires:	%{name}-tools-extra = %{evr}				\
-Requires:	%{name}-tools = %{evr}					\
-Provides:	%{name}-efi = %{evr}					\
-%{?legacy_provides:Provides:	%{name} = %{evr}}			\
-%{-o:Obsoletes:	%{name}-efi < %{evr}}					\
+Requires:	grub2-common = %{evr}					\
+Requires:	grub2-tools-minimal >= %{evr}				\
+Requires:	grub2-tools-extra = %{evr}				\
+Requires:	grub2-tools = %{evr}					\
+Provides:	grub2-efi = %{evr}					\
+%{?legacy_provides:Provides:	grub2 = %{evr}}			\
+%{-o:Obsoletes:	grub2-efi < %{evr}}					\
 									\
 %{expand:%%description %{1}}						\
 %{desc}									\
@@ -237,9 +237,9 @@ This subpackage provides support for %{1} systems.			\
 Summary:	Modules used to build custom grub.efi images		\
 Group:		System Environment/Base					\
 BuildArch:	noarch							\
-Requires:	%{name}-common = %{evr}					\
-%{-p:Provides:	%{name}-efi-modules = %{evr}}				\
-%{-p:Obsoletes:	%{name}-efi-modules < %{evr}}				\
+Requires:	grub2-common = %{evr}					\
+%{-p:Provides:	grub2-efi-modules = %{evr}}				\
+%{-p:Obsoletes:	grub2-efi-modules < %{evr}}				\
 %{expand:%%description %{1}-modules}					\
 %{desc}									\
 This subpackage provides support for rebuilding your own grub.efi.	\
@@ -247,8 +247,8 @@ This subpackage provides support for rebuilding your own grub.efi.	\
 %{expand:%%package %{1}-cdboot}						\
 Summary:	Files used to boot removeable media with EFI		\
 Group:		System Environment/Base					\
-Requires:	%{name}-common = %{evr}					\
-Provides:	%{name}-efi-cdboot = %{evr}				\
+Requires:	grub2-common = %{evr}					\
+Provides:	grub2-efi-cdboot = %{evr}				\
 %{expand:%%description %{1}-cdboot}					\
 %{desc}									\
 This subpackage provides optional components of grub used with removeable media on %{1} systems.\
@@ -263,7 +263,7 @@ git init							\
 echo '![[:digit:]][[:digit:]]_*.in' > util/grub.d/.gitignore	\
 echo '!*.[[:digit:]]' > util/.gitignore				\
 echo '!config.h' > include/grub/emu/.gitignore			\
-git config user.email "%{name}-owner@fedoraproject.org"		\
+git config user.email "grub2-owner@fedoraproject.org"		\
 git config user.name "Fedora Ninjas"				\
 git config gc.auto 0						\
 git add .							\
@@ -281,8 +281,8 @@ git config --unset user.name					\
 	TARGET_LDFLAGS=-static					\\\
         --with-platform=efi					\\\
 	--target=%{1}						\\\
-	--with-grubdir=%{name}					\\\
-        --program-transform-name=s,grub,%{name},		\\\
+	--with-grubdir=grub2					\\\
+        --program-transform-name=s,grub,grub2,		\\\
 	--disable-grub-mount					\\\
 	--disable-werror					\
 %{nil}
@@ -359,8 +359,8 @@ cd grub-%{1}-%{tarversion}					\
 	TARGET_LDFLAGS=-static					\\\
         --with-platform=%{platform}				\\\
 	--target=%{_target_platform}				\\\
-	--with-grubdir=%{name}					\\\
-        --program-transform-name=s,grub,%{name},		\\\
+	--with-grubdir=grub2					\\\
+        --program-transform-name=s,grub,grub2,		\\\
 	--disable-grub-mount					\\\
 	--disable-werror					\
 make %{?_smp_mflags}						\
@@ -400,7 +400,7 @@ fi								\
 find $RPM_BUILD_ROOT -iname "*.module" -exec chmod a-x {} '\;'	\
 touch $RPM_BUILD_ROOT/boot/efi/EFI/%{efidir}/grub.cfg		\
 ln -sf ../boot/efi/EFI/%{efidir}/grub.cfg			\\\
-	$RPM_BUILD_ROOT%{_sysconfdir}/%{name}-efi.cfg		\
+	$RPM_BUILD_ROOT%{_sysconfdir}/grub2-efi.cfg		\
 install -m 755 %{2} $RPM_BUILD_ROOT/boot/efi/EFI/%{efidir}/%{2}	\
 install -m 755 %{3} $RPM_BUILD_ROOT/boot/efi/EFI/%{efidir}/%{3} \
 install -D -m 644 unicode.pf2					\\\
@@ -417,7 +417,7 @@ fi								\
 if [ -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info ]; then	\
 	rm -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info		\
 fi								\
-ln -s ../boot/%{name}/grub.cfg					\\\
+ln -s ../boot/grub2/grub.cfg					\\\
 	${RPM_BUILD_ROOT}%{_sysconfdir}/grub2.cfg		\
 if [ -f $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub2.chrp ]; then \
 	mv $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub2.chrp	\\\
@@ -433,13 +433,13 @@ install -d -m 0755 						\\\
 	$RPM_BUILD_ROOT%{_infodir}/				\
 cp -a $RPM_BUILD_ROOT%{_datarootdir}/locale/en\@quot		\\\
 	$RPM_BUILD_ROOT%{_datarootdir}/locale/en		\
-cp docs/grub.info $RPM_BUILD_ROOT%{_infodir}/%{name}.info	\
+cp docs/grub.info $RPM_BUILD_ROOT%{_infodir}/grub2.info	\
 cp docs/grub-dev.info						\\\
-	$RPM_BUILD_ROOT%{_infodir}/%{name}-dev.info		\
+	$RPM_BUILD_ROOT%{_infodir}/grub2-dev.info		\
 # Ghost config file						\
 install -d -m 0755 ${RPM_BUILD_ROOT}/boot/efi/EFI/%{efidir}/	\
 install -d -m 0755 ${RPM_BUILD_ROOT}/boot/grub2/		\
-install -d -m 0755 ${RPM_BUILD_ROOT}/boot/%{name}/themes/system	\
+install -d -m 0755 ${RPM_BUILD_ROOT}/boot/grub2/themes/system	\
 install -d -m 0755 ${RPM_BUILD_ROOT}%{_sysconfdir}/default	\
 install -d -m 0755 ${RPM_BUILD_ROOT}%{_sysconfdir}/sysconfig	\
 touch ${RPM_BUILD_ROOT}%{_sysconfdir}/default/grub		\
@@ -447,14 +447,14 @@ ln -sf ../default/grub						\\\
 	${RPM_BUILD_ROOT}%{_sysconfdir}/sysconfig/grub		\
 ln -sf ../efi/EFI/%{efidir}/grubenv				\\\
 	$RPM_BUILD_ROOT/boot/grub2/grubenv			\
-touch ${RPM_BUILD_ROOT}/boot/%{name}/grub.cfg			\
+touch ${RPM_BUILD_ROOT}/boot/grub2/grub.cfg			\
 %{nil}
 
 %define define_legacy_variant_files()				\
 %{expand:%%files %{1}}						\
 %defattr(-,root,root,-)						\
-%config(noreplace) %{_sysconfdir}/%{name}.cfg			\
-%ghost %config(noreplace) /boot/%{name}/grub.cfg		\
+%config(noreplace) %{_sysconfdir}/grub2.cfg			\
+%ghost %config(noreplace) /boot/grub2/grub.cfg		\
 								\
 %{expand:%if 0%{?with_legacy_modules}				\
 %{expand:%%files %{1}-modules}					\
@@ -472,7 +472,7 @@ touch ${RPM_BUILD_ROOT}/boot/%{name}/grub.cfg			\
 %define define_efi_variant_files()				\
 %{expand:%%files %{1}}						\
 %defattr(-,root,root,-)						\
-%config(noreplace) %{_sysconfdir}/%{name}-efi.cfg		\
+%config(noreplace) %{_sysconfdir}/grub2-efi.cfg		\
 %dir %attr(0755,root,root)/boot/efi/EFI/%{efidir}		\
 /boot/efi/EFI/%{efidir}/%{2}					\
 %attr(0755,root,root)/boot/efi/EFI/%{efidir}/fonts		\
