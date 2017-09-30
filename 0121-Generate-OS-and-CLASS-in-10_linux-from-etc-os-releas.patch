@@ -22,7 +22,7 @@ index a9692a0c2..c6627268c 100644
  CLASS="--class gnu-linux --class gnu --class os --unrestricted"
  
  if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
--  OS="$(sed 's, release .*$,,g' /etc/system-release)"
+-  OS="$(sed 's, release .*$,,g' /etc/redhat-release)"
 +  OS="$(eval $(grep PRETTY_NAME /etc/os-release) ; echo ${PRETTY_NAME})"
 +  CLASS="--class $(eval $(grep '^ID_LIKE=\|^ID=' /etc/os-release) ; [ -n "${ID_LIKE}" ] && echo ${ID_LIKE} || echo ${ID}) ${CLASS}"
  else
