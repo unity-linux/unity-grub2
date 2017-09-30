@@ -1,6 +1,6 @@
 NAME=unity-grub2
 VERSION=2.02
-DISTREL=3
+DISTREL=4
 
 RPMBUILD=$(shell which rpmbuild)
 CAT=$(shell which cat)

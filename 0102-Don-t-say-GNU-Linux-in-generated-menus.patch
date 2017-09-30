@@ -17,7 +17,7 @@ index f3bf6acd8..ef52cf3db 100644
  
  if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
 -  OS=GNU/Linux
-+  OS="$(sed 's, release .*$,,g' /etc/system-release)"
++  OS="$(sed 's, release .*$,,g' /etc/redhat-release)"
  else
 -  OS="${GRUB_DISTRIBUTOR} GNU/Linux"
 +  OS="${GRUB_DISTRIBUTOR}"
@@ -33,7 +33,7 @@ index c002fc9f9..54f1ec8a2 100644
  
  if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
 -  OS=GNU/Linux
-+  OS="$(sed 's, release .*$,,g' /etc/system-release)"
++  OS="$(sed 's, release .*$,,g' /etc/redhat-release)"
  else
 -  OS="${GRUB_DISTRIBUTOR} GNU/Linux"
 +  OS="${GRUB_DISTRIBUTOR}"
